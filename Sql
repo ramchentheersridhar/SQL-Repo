@@ -1,0 +1,21 @@
+DECLARE
+
+	TYPE EnameTabTyp IS TABLE OF emp.ename%TYPE
+	INDEX BY BINARY_INTEGER;
+
+	TYPE salTabTyp IS TABLE OF emp.sal%TYPE
+	INDEX BY BINARY_INTEGER;
+	ename_tab EnameTabType;
+	sal_tab sallbTyp;
+	n BINARY_INTEGER :=0;
+
+BEGIN
+
+	FOR emp_rec IN(select ename, sal from emp) LOOP
+	   n := n + 1;
+	  ename_tab(n) := emp_rec.ename;
+	  sal_tab(n) := emp_rec.sal;
+	END LOOP;
+
+END;
+
